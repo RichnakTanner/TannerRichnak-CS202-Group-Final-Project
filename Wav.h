@@ -20,13 +20,35 @@
 template <typename T>
 class Wav : public IReadable {
 public:
+	/**
+	 * Struct that holds technical information about the wav file
+	 */
 	WavHeader wavHeader;
+	/**
+	 * Struct that holds the header of the list subchunk
+	 */
 	ListHeader listHeader;
+	/**
+	 * Boolean value of whether or not the wav file has a list subchunk
+	 */
 	bool hasListChunk = 0;
+	/**
+	 * Vector of structs that hold metadata information
+	 */
 	std::vector<List> list;
+	/**
+	 * Pointer to an array that holds the audio data of the wav file
+	 */
 	T* buffer = NULL;
+	/**
+	 * Name of the wav file being read from
+	 */
 	std::string inFile;
 public:
+	/**
+	 * Constructor for the Wav class
+	 * @param inFile - name of the wav file being read from
+	 */
 	Wav(std::string inFile);
 	/**
 	 * Function to read data from an inputted .wav file
